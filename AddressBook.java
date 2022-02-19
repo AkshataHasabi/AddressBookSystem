@@ -1,33 +1,41 @@
 package com.bridgelab.addressbooksystem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class AddressBook {
 	static Scanner sc = new Scanner(System.in);
 	static  ArrayList<Person> adressBook = new ArrayList<Person>();
+	static Person addressBoook=new Person();
+	
 	public static void main(String[] args) {
 		 System.out.println("Welcome to the Address Book Problem");
 		 AddressBook addressBookList=new AddressBook();
 		 boolean condition = true;
 		 
          while (condition == true) { 
-        	 System.out.println("1.add" + "\n" + "2.edit"+ "\n" +"3.delete" );
+        	 System.out.println("1.add" +"\n" +"2.display"+ "\n" + "3.edit"+"\n" +"4.delete"+"\n" +"5.exit");
              int option = sc.nextInt();
-         switch (option) {
-             case 1:
-            	 addressBookList.addContactDetails();
-                 break;
-             case 2:
-            	 addressBookList.editContactDetails();
-                 break;
-             case 3:
-            	 addressBookList.deleteContact();
-                 break;
-             default:
-                 System.out.println("Invalid Input");
-         }
-       }
+             switch (option) {
+             	case 1:
+	            	 addressBookList.addContactDetails();
+	                 break;
+             	case 2:
+	            	 addressBookList.display();
+	                 break;
+             	case 3:
+	            	 addressBookList.editContactDetails();
+	                 break;
+             	case 4:
+	            	 addressBookList.deleteContact();
+	                 break;
+             	case 5:
+             		break;
+             	default:
+             		System.out.println("Invalid Input");
+             }
+         }   
 	}
 	
 	public void addContactDetails() {
@@ -126,5 +134,13 @@ public class AddressBook {
 				adressBook.remove(person);
 				}
 		System.out.println(adressBook);
+	}
+	
+	public void display() {
+		for(int i=0; i<adressBook.size();i++) {
+			Person person=adressBook.get(i);
+			System.out.println("FirstName"+":="+person.getFirstName()+"\n"+"lastname"+":= "+person.getLastName()+"\n"+"Address"+":= "+person.getAddress()
+			+"\n"+"City"+":= "+person.getCity()+"\n"+"State"+":="+person.getState()+"\n"+"Zip"+":= "+person.getZip()+"\n"+"PhoneNumber"+":= "+person.getPhoneNumber()+"\n"+"Email"+":= "+person.getEmail());
+		}
 	}
 }
