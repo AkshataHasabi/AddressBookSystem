@@ -2,6 +2,7 @@ package com.bridgelab.addressbooksystem;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +27,8 @@ public class AddressBook {
 			    boolean condition1 = true;
 		        while (condition1== true) { 
 		        	 System.out.println("1.add" +"\n" +"2.display"+ "\n" + "3.edit"+"\n" +"4.delete"+"\n"+"5.RemoveDuplicates"+"\n"+
-		        			 			"6.SearchPerson in a city or State"+"\n"+"7.View Person By CityOrState"+"\n"+"8.Get a Cunt Of City or State"+"\n"+"9.exit");
+		        			 			"6.SearchPerson in a city or State"+"\n"+"7.View Person By CityOrState"+"\n"
+		        			 +"8.Get a Cunt Of City or State"+"\n"+"9.sortWithPersonName"+"\n"+"10.exit");
 		             int option = sc.nextInt();
 		             switch (option) {
 		             	case 1:
@@ -58,6 +60,9 @@ public class AddressBook {
 		             		addressBookList.getCountOfCityAndState();
 		             		break;
 		             	case 9:
+		             		addressBookList.sortWithPersonName();
+		             		break;
+		             	case 10:
 		             		condition1 = false;
 		             		break;
 		             	default:
@@ -88,6 +93,11 @@ public class AddressBook {
 			 	 System.out.println("Invalid Input");
 			 	}
 			 }
+	}
+
+	public void sortWithPersonName() {
+		adressBook.sort((s1, s2)->s1.getFirstName().compareTo(s2.getFirstName()));
+		System.out.println(adressBook);
 	}
 	
 	public void getCountOfCityAndState() {
@@ -132,6 +142,7 @@ public class AddressBook {
 		 adressBook.add(details);
 		 System.out.print(adressBook);
 		 System.out.println("succesfully added person new contacts");
+		 
 	}
 	
 	public void editContactDetails() {
